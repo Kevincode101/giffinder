@@ -3,7 +3,10 @@
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 
 $(document).ready(function() {
+    var counter = 0;
+    var currentInput = '';
     console.log('the document is ready');
+
     function getGiphy(i) {
         console.log('The getGiphy Function was called');
         $.ajax({
@@ -11,9 +14,9 @@ $(document).ready(function() {
             method: "GET",
             success: function(response) {
                 //Log the orignal image to the console    
-                var image = response.data[5].images.original.url;
+                var image = response.data[counter].images.original.url;
                 //Log the url from the orignial gif to the console  
-                $('body').append('<img src=' + image + '>');
+                $('#gif').html('<img src=' + image + '>');
             },
         });
     }
@@ -22,6 +25,13 @@ $(document).ready(function() {
         var input = $("#search-term").val();
         console.log(input);
         getGiphy(input);
+        if (currentInput == input) {
+            counter++;
+        } else {
+            counter = 0;
+        }
+        console.log('counter is ' + counter);
+        currentInput = input;
     });
 
 });
