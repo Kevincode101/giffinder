@@ -18,20 +18,41 @@ $(document).ready(function() {
                 //Log the url from the orignial gif to the console  
                 $('#gif').html('<img src=' + image + '>');
             },
-        });
-    }
-    $("#search").click(function() {
-        console.log('the button was clicked');
-        var input = $("#search-term").val();
-        console.log(input);
-        getGiphy(input);
-        if (currentInput == input) {
-            counter++;
-        } else {
-            counter = 0;
-        }
-        console.log('counter is ' + counter);
-        currentInput = input;
-    });
 
+        });
+        $("#search").click(function() {
+            console.log('the button was clicked');
+            var input = $("#search-term").val();
+            console.log(input);
+            getGiphy(input);
+            if (currentInput == input) {
+                counter++;
+            }
+            else {
+                counter = 0;
+            }
+            console.log('counter is ' + counter);
+            currentInput = input;
+        });
+
+    }
+
+    $("body").keydown(function(e) {
+        if (e.which === 13) {
+            {
+                console.log('the button was clicked');
+                var input = $("#search-term").val();
+                console.log(input);
+                getGiphy(input);
+                if (currentInput == input) {
+                    counter++;
+                }
+                else {
+                    counter = 0;
+                }
+                console.log('counter is ' + counter);
+                currentInput = input;
+            }
+        }
+    });
 });
